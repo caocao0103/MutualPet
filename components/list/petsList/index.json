@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pet-poster": "/components/func/petPoster/petPoster"
+  }
+}

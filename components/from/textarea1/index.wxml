@@ -1,0 +1,20 @@
+<!--components/from/textarea1/index.wxml-->
+<view class="textarea1">
+  <view class="textarea1--title">
+    <text wx:if="{{mandatory}}" class="input1--mandatory">*</text>{{title}}
+  </view>
+  <textarea 
+    class="textarea1-text" 
+    value="{{value}}" 
+    placeholder="{{placeholder}}" 
+    placeholder-style="color:#CCCCCC;font-size:28rpx;" placeholder-class="textarea-placeholder" 
+    maxlength="140" 
+    auto-height="" 
+    bindinput="onInput" 
+    bindfocus="" 
+    bindblur="" 
+    bindconfirm="" 
+  >
+  </textarea>
+  
+</view>

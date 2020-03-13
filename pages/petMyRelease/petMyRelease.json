@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigation": "/components/public/navigation/index",
+    "pets-list": "/components/list/petsList/index"
+  },
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

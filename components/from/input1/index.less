@@ -1,0 +1,41 @@
+@import "../../../style.less";
+.input1 {
+  padding: 30rpx 0;
+  // border-bottom: 1rpx solid #EEEEEE;
+  position: relative;
+  &::after{
+    content: "";
+    width: 630rpx;
+    border: 1rpx solid #EEEEEE;
+    position: absolute;
+    bottom: 2rpx;
+    right: 0;
+  }
+  .fl_row_bet();
+  .input1--title {
+    .fl_ais();
+    .t_si(#444444,28rpx,500);
+    .input1--mandatory {
+      color: red;
+      width: 30rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .input1__r {
+    flex: 1;
+    .fl_ais();
+    flex: 1;
+    .input1__r--input {
+      height: 40rpx;
+      text-align: right;
+      flex: 1;
+      padding-right: 10rpx;
+      .t_si(#888888,28rpx);
+    }
+    .input1__r--text {
+      .t_si(#888888,28rpx);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<!--packageD/pages/petMyRelease/petMyRelease.wxml-->
+<navigation></navigation>
+<view class="myAdopt-petsLi" style="padding:0 30rpx;">
+  <block wx:for="{{petslist}}" wx:key="id">
+    <!--  wx:if="{{item.status==2}}" -->
+    <pets-list 
+      type="{{item.status}}" 
+      status="{{2}}" 
+      petsObj="{{item}}"
+      bind:petUpDown="onPetUpDown"
+      bind:share="onPetShare"
+      is_collection="{{2}}"
+    ></pets-list>
+  </block>
+  <view class="myAdopt-pet__empty" wx:if="{{petslist.length<1}}">
+    <image class="myAdopt-pet__empty--img" src="/common/images/pet_empty.png" />
+    <view class="myAdopt-pet__empty--desc" >还没有发布的宠物，快去发布吧</view>
+  </view>
+  <view class="myAdopt-petsLi--btn" bindtap="toPetRelease">
+    发布新的领养
+  </view>
+</view>

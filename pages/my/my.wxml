@@ -1,0 +1,80 @@
+<!--pages/my/my.wxml-->
+<navigation></navigation>
+<view class="my">
+  <view class="my-bg">
+    <!--  aspectFit|aspectFill|widthFix -->
+    <image 
+      class="my-bg-img" 
+      src="/common/images/my/my_bg.png" 
+      mode="" 
+      lazy-load="false" 
+      binderror="" 
+      bindload="" 
+    />
+    <view class="my-bg-box">
+      <image 
+        class="bg__userImg" 
+        src="{{userInfo.head_pic===undefined?'/common/images/tou.png':userInfo.head_pic}}" 
+        mode="" 
+        lazy-load="false" 
+        binderror="" 
+        bindload="" 
+      />
+      <view class="bg-info">
+        <view 
+          class="info-user" 
+          wx:if="{{userInfo.username!==nudefined}}"
+        >
+          <view class="info-user--name">{{userInfo.username}}</view>
+          <view 
+            class="info-user__binding"
+            wx:if="{{userInfo.mobile===''}}"
+          >
+            <text class="info-user__binding--tel" >手机号未绑定</text>
+            <text class="info-user__binding--btn" >绑定</text>
+          </view>
+          <view 
+            class="info-user__telnum" 
+            wx:else
+          >
+            {{userInfo.mobile}}
+          </view>
+        </view>
+        <view 
+          class="info-user" 
+          wx:else 
+          bindtap="onLogin"
+          wx:else
+        >
+          <view class="info-user--name">点击登录账户</view>
+        </view>
+        <image 
+          class="info-arrow" 
+          src="/common/images/arrow1.png" 
+          mode="" 
+          lazy-load="false" 
+          binderror="" 
+          bindload="" 
+        />
+      </view>
+    </view>
+  </view>
+  <view class="my-nav">
+    <view 
+      class="my-nav__li"
+      wx:for="{{navData}}"
+      wx:key="id"
+      data-index="{{index}}"
+      bind:tap="onToNav"
+    >
+      <image 
+        class="my-nav__li--img" 
+        src="{{item.icon}}" 
+        mode="" 
+      />
+      <view class="my-nav__li--title">{{item.title}}</view>
+    </view>
+    
+  </view>
+</view>
+  

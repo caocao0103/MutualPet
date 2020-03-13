@@ -1,0 +1,29 @@
+<!--components/from/petvideo/petvideo.wxml-->
+<view class="petvideo">
+  <view class="petvideo_title">视频<text>最多60秒</text></view>
+  <view class="petvideo_box" bindtap="selectVideo" wx:if="{{!videoFile}}">
+    <view class="petvideo_btn" bind:tap="onStartVoice">
+      <image 
+        class="petvideo_icon" 
+        src="/common/images/pet_icon_video.png"
+      ></image>
+    </view>
+    <view class="petvideo_text">录一段视频会更吸引人哦～</view>
+  </view>
+
+  <view class="petvideo_content" wx:else>
+    <video bindplay="previewVideo" class="pet_video" id="videoId" src="{{videoFile}}" controls></video>
+    <!-- <view class="pet_video_bg"></view> -->
+    <view class="pet_video_select">
+      <view class="select_prew" bindtap="preview">
+        <image class="select_icon" src="/common/images/pet_icon_play_delete.png"></image>
+        预览
+      </view>
+      <view class="select_delete" bindtap="delete">
+        <image class="select_icon" src="/common/images/pet_icon_play_look.png"></image>
+        删除
+      </view>
+    </view>
+  </view>
+</view>
+

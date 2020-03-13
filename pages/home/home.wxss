@@ -1,0 +1,55 @@
+.home-swiper {
+  height: 320rpx;
+}
+.swiper--img {
+  width: 100%;
+  height: 320rpx;
+}
+.home-petsLi {
+  padding: 0 30rpx;
+}
+.home-petsLi {
+  padding: 0 30rpx;
+}
+.home-petsLi--btm {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #CCCCCC;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+.petIssue {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 0rpx;
+  position: fixed;
+  right: 0;
+  bottom: 380rpx;
+}
+.myAdopt-pet__empty {
+  height: 700rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.myAdopt-pet__empty--img {
+  width: 400rpx;
+  height: 276rpx;
+}
+.myAdopt-pet__empty--desc {
+  color: #AAAAAA;
+  font-size: 26rpx;
+  margin-top: 30rpx;
+}
+.petIssue {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 0rpx;
+  position: fixed;
+  right: 0;
+  bottom: 380rpx;
+}
