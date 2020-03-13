@@ -1,7 +1,0 @@
-<!-- pages/my_adopt/myAdopt.wxml -->
-<navigation></navigation>
-<view class="myAdopt-petsLi" style="padding:0 30rpx;">
-  <block wx:for="{{petslist}}" wx:key="id">
-    <pets-list petsObj="{{item}}"></pets-list>
-  </block>
-</view>

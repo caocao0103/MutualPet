@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "popupbottom": "/components/template/popupBottom/popupBottom"
-  }
-}
