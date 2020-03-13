@@ -1,0 +1,23 @@
+<!--components/from/input1/index.wxml-->
+<view class="input1">
+  <view class="input1--title">
+    <view class="input1--mandatory">{{mandatory?'*':''}}</view>{{title}}
+  </view>
+  <view class="input1__r">
+    <input 
+      class="input1__r--input" 
+      value="{{value}}" 
+      type="{{type}}" 
+      placeholder="{{placeholder}}" 
+      placeholder-style="text-align: right;color:#CCCCCC;font-size:28rpx;" 
+      placeholder-class="input-placeholder" 
+      maxlength="20" 
+      bindinput="onInput" 
+      bindfocus="" 
+      bindblur="" 
+      bindconfirm=""
+    >
+    </input>
+    <text class="input1__r--text">{{company}}</text>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+@import "../../../common/style/style.less";
+.chooseImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border:2rpx solid #DDDDDD;
+  box-sizing: border-box;
+  .chooseImage--icon {
+    position: relative;
+    width: 34rpx;
+    height: 34rpx;
+    &:after{
+      content:"";
+      .w_h(4rpx,34rpx);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      background: #CCCCCC;
+    }
+    &:before {
+      content: "";
+      .w_h(34rpx,4rpx);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      background: #CCCCCC;
+    }
+  }
+  .chooseImage--text {
+    .t_si(#CCCCCC,24rpx);
+    margin-top: 8rpx;
+  }
+}
+.image {
+  position: relative
+}
+.close {
+  position: absolute;
+  .w_h(50rpx,50rpx,50%);
+  top: 0;
+  right: 0;
+  transform: translate(30%,-30%);
+}

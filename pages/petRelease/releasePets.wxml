@@ -1,0 +1,174 @@
+<!--pages/releasePets/releasePets.wxml-->
+<nav-title 
+  tleType="{{1}}" 
+  title="发布宠物" 
+></nav-title>
+<navigation title="发布宠物" >
+</navigation>
+<!-- 提示公告 -->
+<view class="releasePets-hint">
+  <image class="releasePets-hint--icon" src="/common/images/tip.png" ></image>
+  <view class="releasePets-hint--text">
+    请认真填写真实信息，个人上传资料和内容必须遵守相关法律法规，请严格遵守相关规定
+  </view>
+</view>
+
+<view class="releasePets">
+  <!-- 上传图片部分 -->
+  <view class="releasePets-choose">
+    <view class="releasePets-choose__top">
+      <chooseimage 
+        chooseStyle="width:360rpx;height:360rpx;"
+        bind:chooseImage="getCoverImage"
+        val="{{release.cover_img.val}}"
+      ></chooseimage>
+      <view class="releasePets-choose__top--Tips">封面图</view>
+    </view>
+    <view class="releasePets-choose__bottom">
+      <moreChooseImage
+        chooseStyle="width:200rpx;height:200rpx;"
+        bind:moreChooseImage="getPetsDetailsImage"
+        val="{{release.details_img.val}}"
+        count="{{3}}"
+      ></moreChooseImage>
+    </view>
+  </view>
+  <!-- 简单资料 -->
+  <view class="releasePets-Hygiene">
+    <view class="Hygiene--title">
+      简单资料
+    </view>
+    <view class="Hygiene-from">
+      <view class="from--name">
+        <input1 
+          title="宠物昵称" 
+          placeholder="请输入"
+          type="text"
+          bind:input="getNameInput"
+          val="{{release.name.val}}"
+          mandatory="{{release.name.must}}"
+        ></input1>
+      </view>
+      <pickernav 
+        pickerArr="{{petType}}" 
+        bind:pickerStr="getPickerPetType"
+        val="{{release.petType.val}}"
+        mandatory="{{release.petType.must}}"
+      ></pickernav>
+      <pickernav 
+        pickerArr="{{sex}}" 
+        bind:pickerStr="getPickerSex"
+        val="{{release.sex.val}}"
+        mandatory="{{release.sex.must}}"
+      ></pickernav>
+      <pickernav 
+        pickerArr="{{Birthday}}"
+        bind:pickerDate="getPickerBirthday"
+        val="{{release.birthday.val}}"
+        mandatory="{{release.birthday.must}}"
+      ></pickernav>
+      <pickernav 
+        pickerArr="{{multiSelector}}"
+        bind:pickerAge="getPickerAge"
+        val="{{release.age.val}}"
+      ></pickernav>
+      <view class="from--weight">
+        <input1 
+          title="体重" 
+          placeholder="请输入体重"
+          company="kg"
+          type="number"
+          bind:input="getWeightInput"
+          val="{{release.weight.val}}"
+        ></input1>
+      </view>
+      <!-- 
+      <pickernav 
+        pickerArr="{{Hygiene}}"
+        bind:pickerStr="getPickerHygiene"
+      ></pickernav>
+      -->
+      <view class="from-moreSel">
+        <more-select 
+          moreData="{{moreData}}"
+          bind:moreSel="getPickerHygiene"
+          val="{{release.hygiene.val}}"
+        ></more-select>
+      </view>
+      <pickernav 
+        pickerArr="{{region}}"
+        bind:pickerCity="getPickerRegion"
+        val="{{release.city.val}}"
+        mandatory="{{release.city.must}}"
+      ></pickernav>
+      <view class="from-tel">
+        <view class="from-tel--title">
+          <text class="from-tel--must">*</text>
+          联系方式 
+          <text class="from-tel--tip">（任选一个即可）</text>
+        </view>
+        <view class="from-tel--input" >
+          <input2 
+            title="微信" 
+            placeholder="请输入微信" 
+            bind:input="getWxNum"
+            val="{{release.wx.val}}"
+          ></input2>
+          <input2 
+            title="QQ" 
+            placeholder="请输入QQ" 
+            type="number"
+            bind:input="getQQNum"
+            val="{{release.QQ.val}}"
+          ></input2>
+          <input2 
+            title="手机" 
+            placeholder="请输入手机号" 
+            type="number"
+            bind:input="getTelNum"
+            val="{{release.tel.val}}"
+          ></input2>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="releasePets-introduce">
+    <view class="releasePets-introduce--title">
+      详细介绍
+    </view>
+    <view class="releasePets-introduce--textarea">
+      <textarea1 
+        placeholder="请填写内容" 
+        title="关于我"
+        bind:textarea="getIntroduce"
+        val="{{release.introduce.val}}"
+        mandatory="{{release.introduce.must}}"
+      ></textarea1>
+    </view>
+    <view class="releasePets-introduce--textarea">
+      <textarea1 
+        placeholder="请填写内容" 
+        title="领养人要求"
+        bind:textarea="getDemand"
+        val="{{release.demand.val}}"
+        mandatory="{{release.demand.must}}"
+      ></textarea1>
+    </view>
+  </view>
+  <!-- 视频 -->
+  <!-- <view class="releasePets_video">
+    <petvideo bind:videoFile="videoFile" bind:deleteVideo="deleteVideo" val="{{release.videoFile.val}}"></petvideo>
+  </view> -->
+  <!-- 语音 -->
+  <view class="releasePets-voice">
+    <voice bind:voiceFile="voiceFile" bind:deleteVoice="deleteVoice" val="{{release.demandVoice.val}}"></voice>
+  </view>
+</view>
+
+<view 
+  class="releasePets--sub" 
+  bindtap="onReleasePets"
+>
+  立即发布
+</view>

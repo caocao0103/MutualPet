@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "navigation":"/components/public/navigation/index",
+    "chooseimage":"/components/from/chooseImage/index",
+    "pickernav":"/components/from/pickerNav/index",
+    "input1":"/components/from/input1/index",
+    "input2":"/components/from/input2/index",
+    "textarea1":"/components/from/textarea1/index",
+    "voice":"/components/from/voice/index"
+  }
+}

@@ -1,0 +1,102 @@
+.myCanvas {
+  position: absolute;
+  transform: translateX(-500%);
+}
+.myPoster {
+  width: 510rpx;
+  height: 907rpx;
+  border-radius: 0rpx;
+  position: relative;
+}
+.myPoster .myPoster--bgimg {
+  width: 510rpx;
+  height: 907rpx;
+  border-radius: 0rpx;
+}
+.myPoster .myPoster-main {
+  position: absolute;
+  width: 510rpx;
+  height: 907rpx;
+  border-radius: 0rpx;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.myPoster .myPoster-main .myPoster-main--petimg {
+  margin-top: 334rpx;
+  width: 301rpx;
+  height: 235rpx;
+  border-radius: 22rpx;
+  margin-right: 46rpx;
+}
+.myPoster .myPoster-main .myPoster-main--name {
+  color: #663401;
+  font-size: 26rpx;
+  font-weight: 600;
+  margin-top: 36rpx;
+}
+.myPoster .myPoster-main .myPoster-main--info {
+  color: #663401;
+  font-size: 22rpx;
+  font-weight: 300;
+  margin-top: 16rpx;
+}
+.myPoster .myPoster-main .myPoster-main--qrimg {
+  margin-top: 26rpx;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 0rpx;
+}
+.myPoster .myPoster-main .myPoster-main--tip1 {
+  color: #444444;
+  font-size: 20rpx;
+  font-weight: 500;
+  margin-top: 28rpx;
+}
+.myPoster .myPoster-main .myPoster-main--tip2 {
+  color: #AAAAAA;
+  font-size: 16rpx;
+  font-weight: 400;
+  margin-top: 8rpx;
+}
+.listpopup-poster {
+  padding-top: 20rpx;
+}
+.pPoster--title {
+  text-align: center;
+  font-size: 28rpx;
+  color: #444444;
+  font-weight: 500;
+}
+.pPoster__nav {
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.pPoster__nav__share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+.pPoster__nav__share::after {
+  border: none;
+}
+button {
+  line-height: 45rpx;
+}
+.pPoster__nav__share--img {
+  width: 50rpx;
+  height: 50rpx;
+}
+.pPoster__nav__share--text {
+  color: #BBBBBB;
+  font-size: 26rpx;
+}

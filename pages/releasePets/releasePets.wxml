@@ -1,0 +1,130 @@
+<!--pages/releasePets/releasePets.wxml-->
+<navigation></navigation>
+<!-- 提示公告 -->
+<view class="releasePets-hint">
+  <image class="releasePets-hint--icon" src="" ></image>
+  <view class="releasePets-hint--text">
+    请认真填写真实信息，个人上传资料和内容必须遵守相关法律法规，请严格遵守相关规定
+  </view>
+</view>
+
+<view class="releasePets">
+  <!-- 上传图片部分 -->
+  <view class="releasePets-choose">
+    <view class="releasePets-choose__top">
+      <chooseimage 
+        chooseStyle="width:360rpx;height:360rpx;"
+        bind:chooseImage="getCoverImage"
+      ></chooseimage>
+      <view class="releasePets-choose__top--Tips">封面图</view>
+    </view>
+    <view class="releasePets-choose__bottom">
+      <chooseimage
+        chooseStyle="width:200rpx;height:200rpx;"
+        bind:chooseImage="getPetsImage1"
+      ></chooseimage>
+      <chooseimage
+        chooseStyle="width:200rpx;height:200rpx;"
+        bind:chooseImage="getPetsImage2"
+      ></chooseimage>
+      <chooseimage
+        chooseStyle="width:200rpx;height:200rpx;"
+        bind:chooseImage="getPetsImage3"
+      ></chooseimage>
+    </view>
+  </view>
+  <!-- 简单资料 -->
+  <view class="releasePets-Hygiene">
+    <view class="Hygiene--title">
+      简单资料
+    </view>
+    <view class="Hygiene-from">
+      <view class="from--name">
+        <input1 
+          title="宠物昵称" 
+          placeholder="请输入"
+          type="text"
+          bind:input="getNameInput"
+        ></input1>
+      </view>
+      <pickernav 
+        pickerArr="{{age}}" 
+        bind:pickerStr="getPickerAge"
+      ></pickernav>
+      <pickernav 
+        pickerArr="{{Birthday}}"
+        bind:pickerDate="getPickerBirthday"
+      ></pickernav>
+      <view class="from--weight">
+        <input1 
+          title="体重" 
+          placeholder="请输入体重"
+          company="kg"
+          type="number"
+          bind:input="getWeightInput"
+        ></input1>
+      </view>
+      <pickernav 
+        pickerArr="{{Hygiene}}"
+        bind:pickerStr="getPickerHygiene"
+      ></pickernav>
+      <pickernav 
+        pickerArr="{{region}}"
+        bind:pickerCity="getPickerRegion"
+      ></pickernav>
+      <view class="from-tel">
+        <view class="from-tel--title">
+          联系方式
+        </view>
+        <view class="from-tel--input" >
+          <input2 
+            title="微信" 
+            placeholder="请输入微信" 
+            bind:input="getWxNum"
+          ></input2>
+          <input2 
+            title="QQ" 
+            placeholder="请输入QQ" 
+            type="number"
+            bind:input="getQQNum"
+          ></input2>
+          <input2 
+            title="手机" 
+            placeholder="请输入手机号" 
+            type="number"
+            bind:input="getTelNum"
+          ></input2>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="releasePets-introduce">
+    <view class="releasePets-introduce--title">
+      详细介绍
+    </view>
+    <view class="releasePets-introduce--textarea">
+      <textarea1 
+        placeholder="请填写内容" 
+        title="关于我"
+        bind:textarea="getIntroduce"
+      ></textarea1>
+    </view>
+    <view class="releasePets-introduce--textarea">
+      <textarea1 
+        placeholder="请填写内容" 
+        title="领养人要求"
+        bind:textarea="getDemand"
+      ></textarea1>
+    </view>
+  </view>
+
+  <!-- <view class="releasePets-voice">
+    <voice bind:voiceFile="voiceFile" bind:deleteVoice="deleteVoice" val="{{release.demandVoice.val}}"></voice>
+  </view> -->
+
+</view>
+
+<view class="releasePets--sub" bindtap="onReleasePets">
+  立即发布
+</view>

@@ -1,0 +1,23 @@
+@import "../../../style.less";
+.moreSel {
+  padding: 30rpx 0;
+  .moreSel-li {
+    margin-top: 30rpx;
+    &:first-child {
+      margin-top: 0rpx;
+    }
+    .fl_row_bet();
+    .moreSel-li--l {
+      .t_si(#444444,28rpx,500);
+    }
+    .moreSel-li--r {
+      .w_h(32rpx,32rpx);
+      .bor-rd(#DDDDDD,4rpx,2rpx);
+      box-sizing: border-box;
+      // .check(#FF6F1D,#fff,9rpx,7rpx);
+    }
+    .moreSel--sel {
+      .check(#FF6F1D,#fff,9rpx,7rpx);
+    }
+  }
+}

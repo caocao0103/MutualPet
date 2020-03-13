@@ -1,0 +1,94 @@
+<!--components/list/petsList/petsList.wxml-->
+<view class="petsList" bind:tap="toPetDetails">
+  <view class="petsList-main">
+    <!-- 视频 -->
+    <!-- <video class="petsList-lImg" src="{{pets.video}}" wx:if="{{pets.video !== ''}}"></video> -->
+    <image class="petsList-lImg" src="{{pets.cover_img||details_img[0]||'/common/images/pet_sharebg.jpg'}}" mode="aspectFill"></image>
+    <!-- 视频遮罩 -->
+    <!-- <view class="pets_img_bg" wx:if="{{pets.video !== ''}}"></view> -->
+    <view class="petsList-info">
+      <view class="petsList-info__l">
+        <view class="petsList-info__l--title">{{pets.pet_nickname}}</view>  
+        <view class="petsList-info__l--sex">性别 {{pets.sex}}</view>
+        <view class="petsList-info__l--city">城市 {{pets.city}}</view>
+        <view class="petsList-info__l__tags">
+          <text 
+            class="petsList-info__tags--li"
+            wx:if="{{item}}"
+            wx:for="{{pets.tags}}" 
+            wx:key="index"
+          >{{item}}</text>
+        </view>
+      </view>
+      <view 
+        class="petsList-info__r" 
+        wx:if="{{type===1}}"
+      >
+        <view class="petsList-info__r--examine">待审核</view>
+      </view>
+      <view 
+        class="petsList-info__r" 
+        wx:if="{{type===2&&status==1}}"
+      >
+        <view class="petsList-info__r--adopt" catchtap="onPetAdopt">领养它</view>
+        <view 
+          class="petsList-info__r--shrBtn" 
+          data-petid="{{is_collection===1?petsObj.pet_id:petsObj.id}}" 
+          catchtap="getDetails" 
+          open-type="share"
+        >
+          <image 
+            class="petsList-info__r--sharte" 
+            src="/common/images/share3.png" 
+          /> 
+        </view>
+      </view>
+      <view 
+        class="petsList-info__r" 
+        wx:if="{{type===5}}"
+      >
+        <view class="petsList-info__r--alterbtn" catch:tap="onPetAlter">修改</view>
+        <view 
+          class="petsList-info__r--upbtn"
+          catch:tap="onPetUpperShelf"
+        >上架</view>
+      </view>
+      <view 
+        class="petsList-info__r" 
+        wx:if="{{type===2&&status==2}}"
+      >
+        <view class="petsList-info__r--alterbtn" catch:tap="onPetAlter">修改</view>
+        <view 
+          class="petsList-info__r--upbtn" 
+          catch:tap="onPetLowershelf"
+        >下架</view>
+      </view>
+      <view 
+        class="petsList-info__r" 
+        wx:if="{{type===3}}"
+      >
+        <view class=""></view>
+        <view class="petsList-info__r--alterbtn" catch:tap="onPetAlter">修改</view>
+      </view>
+    </view>
+    <image 
+      class="lowershelfIcon"
+      src="/common/images/lowershelf.png" 
+      wx:if="{{type===5}}"
+    />
+    <image 
+      class="lowershelfIcon"
+      src="/common/images/pet_pass.png" 
+      wx:if="{{type===3}}"
+    />
+  </view>
+  <view class="petsList--turnDown" wx:if="{{type===3}}">
+    驳回原因：{{pets.fail_reason}}
+  </view>
+</view>
+
+<pet-poster 
+  wx:if="{{posterStatus}}"
+  petDetails="{{petDetails}}"
+  bind:petClone="onPetClone"
+></pet-poster>

@@ -1,0 +1,53 @@
+<!--components/from/voice/index.wxml-->
+<view class="voice">
+  <view class="voice--title">来段语音<text>最多60秒</text></view>
+  <view class="voice-box" wx:if="{{voice===''}}">
+    <view class="voice__btn" bind:tap="onStartVoice">
+      <image 
+        class="voice__btn--icon" 
+        src="/common/images/Recording_voice.png"
+      ></image>
+    </view>
+    <view class="voice--text">录一段增加语音介绍</view>
+  </view>
+  <view 
+    class="voice-play" 
+    wx:else
+    bind:tap="onPlayVoice"
+  >
+    <view class="voice-box__play">
+      <image 
+      class="voice-box__play--l" 
+      src="/common/images/{{playState?'play_voice2.gif':'play_voice.png'}}"
+      ></image>
+      <image class="voice-box__play--r" src="/common/images/rw_cut_icon.png" catchtap="deleteVoice"></image>
+    </view>
+  </view>
+</view>
+
+<view class="recording" wx:if="{{recordingState}}">
+  <view class="recording--mask"></view>
+  <view class="recording-popup">
+    <view class="popup--title">正在录音</view>
+    <view class="popup__time">
+      <view class="popup__time--animation">
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+      </view>
+      <view class="popup__time--s">{{minute}}:{{second}}</view>
+      <view class="popup__time--animation">
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+        <text class="animation--li"></text>
+      </view>
+    </view>
+    <view class="popup--btn" bind:tap="onStopRecording"></view>
+  </view>
+</view>

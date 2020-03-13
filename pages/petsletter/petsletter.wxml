@@ -1,0 +1,94 @@
+
+
+<view class='tabss' style='margin-top:{{statusBarHeight}}px'>
+    <navigator class='navigator' open-type="navigateBack" delta="1">
+      <view class='fanhui'>
+        <image class='fanhui_tu' src='../../images/fanhui.png'></image>
+      </view>
+    </navigator>
+    <navigator class='navigator' url="/pages/home/home" open-type="switchTab">
+      <view class='fanhui02'>
+        <image class='fanhui_tu02' src='../../images/huishouye.png'></image>
+      </view>
+    </navigator>
+  </view>
+  <block wx:if="{{username.length < 6}}">
+    <view class='titles' style='padding-top:{{statusBarHeight}}px'>{{username}}
+      <text class='awardss' bindtap='jubao'>举报</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='titles' style='padding-top:{{statusBarHeight}}px'>
+      <view class=' title_sixin'>{{username}}</view>
+      <text class='awards' bindtap='jubao'>举报</text>
+    </view>
+  </block>
+
+<!-- 举报弹框 -->
+<view class='meng' wx:if="{{jubao == true}}" bindtap='qingchujubao'></view>
+<view class='jub_model' wx:if="{{jubao == true}}">
+  <view class='jub_top'>
+    <image src='../../images/fangyuanjubao.png'></image>
+    <view>骚扰举报</view>
+  </view>
+  <checkbox-group bindchange="saorao">
+    <view class='jub_center'>
+      <checkbox value="对方发布不实信息" />对方发布不实信息</view>
+    <view class='jub_center'>
+      <checkbox value="发布信息已经下架、过期" />发布信息已经下架、过期</view>
+    <view class='jub_center'>
+      <checkbox value="内容涉及违规违法" />内容涉及违规违法</view>
+    <view class='jub_center'>
+      <checkbox value="内容信息有误" />内容信息有误</view>
+    <view class='jub_center'>
+      <checkbox value="其他" />其他违规行为</view>
+  </checkbox-group>
+  <button open-type='contact' class='jub_center kefus'>联系人工客服解答 -></button>
+  <button class='jub_tijao' bindtap='tijiao'>提交</button>
+</view>
+
+
+
+
+<scroll-view scroll-y scroll-top="{{scrollTop}}" style='padding-top: {{statusBarHeights}}px;height: {{scrollheights}}px;'>
+
+  <block wx:for="{{underMessage}}" wx:key="index">
+    <!-- 接 -->
+    <block wx:if="{{item.from_pet_uid != pet_uid}}">
+
+      <view class='Privateletter_li'>
+        <view class='Privateletter_img'>
+          <image src='{{item.from_user_head_pic == ""?"/images/tou.png":item.from_user_head_pic}}'></image>
+        </view>
+        <view class='Privateletter_p'>{{item.message}}</view>
+      </view>
+    </block>
+
+    <!-- 发 -->
+    <block wx:else>
+      <view class='Privateletter_li'>
+        <view class='Privateletter_img Privateletter_img2'>
+          <image src='{{item.from_user_head_pic == ""?"/images/tou.png":item.from_user_head_pic}}'></image>
+        </view>
+        <view class='Privateletter_p2'>{{item.message}}</view>
+
+      </view>
+
+    </block>
+
+  </block>
+</scroll-view>
+
+<!--输入框--------->
+<view class='Prvatele_bots'>
+
+  <view class="add_private_input">
+    <view class='rightbox'>
+      <input cursor-spacing='30rpx' class='inputss' placeholder='请输入' bindinput="change" value="{{content}}"></input>
+    </view>
+    <view class='rightbox2'>
+      <button id='enter_btns' catchtap="_petsendMessage">发送</button>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,48 @@
+.input1 {
+  padding: 30rpx 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input1::after {
+  content: "";
+  width: 630rpx;
+  border: 1rpx solid #EEEEEE;
+  position: absolute;
+  bottom: 2rpx;
+  right: 0;
+}
+.input1 .input1--title {
+  display: flex;
+  align-items: center;
+  color: #444444;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.input1 .input1--title .input1--mandatory {
+  color: red;
+  width: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input1 .input1__r {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.input1 .input1__r .input1__r--input {
+  height: 40rpx;
+  text-align: right;
+  flex: 1;
+  padding-right: 10rpx;
+  color: #888888;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.input1 .input1__r .input1__r--text {
+  color: #888888;
+  font-size: 28rpx;
+  font-weight: 400;
+}

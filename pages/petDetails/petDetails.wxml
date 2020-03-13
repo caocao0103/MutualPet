@@ -1,0 +1,194 @@
+<navigation title="互助宠物"></navigation>
+<view class="petDet">
+  <!-- 宠物轮播图 -->
+  <view class="petDet-swiper">
+    <view class="swiper-imgLength" >
+      <image 
+        class="swiper-imgLength--img" 
+        src="/common/images/picIcon.png" 
+        mode="" 
+        lazy-load="false" 
+        binderror="" 
+        bindload="" 
+      />
+      <text class="swiper-imgLength--current" >{{pic.length}}</text>
+    </view>
+    <swiper 
+      indicator-dots="{{false}}" 
+      autoplay="{{false}}" 
+      interval="{{5000}}" 
+      duration="{{500}}"
+      circular="{{false}}"
+      bindchange="onSwiperChange"
+      bindtap="previewImage"
+       data-index="{{index}}" 
+    >
+      <!-- 轮播视频 -->
+      <!-- <swiper-item catchtap="notPreview" wx:if="{{petDetails.video !== ''}}">
+        <video class="petDet--img" src="{{petDetails.video}}"></video>
+      </swiper-item> -->
+      <block wx:for="{{pic}}" wx:key="id">
+        <swiper-item>
+          <image 
+            class="petDet--img" 
+            src="{{item}}" 
+            mode="aspectFill"
+          />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--  宠物信息 -->
+  <view class="petDet-info">
+    <view class="petDet-info__l">
+      <view class="info__l--name">{{petDetails.pet_nickname}}</view>
+      <view class="info__l--type">类别: 
+        <text class="info__l--type--text" wx:if="{{petDetails.type==1}}">猫</text>
+        <text class="info__l--type--text" wx:if="{{petDetails.type==2}}">狗</text>
+        <text class="info__l--type--text" wx:if="{{petDetails.type==3}}">羊驼</text>
+        <text class="info__l--type--text" wx:if="{{petDetails.type==4}}">仓鼠</text>
+        <text class="info__l--type--text" wx:if="{{petDetails.type==5}}">蛇</text>
+        <block wx:if="{{petDetails.sex==1}}">
+         <image  src="/common/images/label_man.png"></image>
+        </block>
+         <block wx:if="{{petDetails.sex==2}}">
+         <image  src="/common/images/label_woman.png"></image>
+        </block>
+      </view>
+      <block wx:if="{{petDetails.age!==''}}">
+         <view class="info__l--type" wx:if="{{age[0]+age[1]+age[2]!=0}}">年龄: 
+     <!--
+        <text class="info__l--type--text"><text wx:if="{{age[0]!=0}}">{{age[0]}}年</text><text wx:if="{{age[1]!=0}}">{{age[1]}}月</text><text wx:if="{{age[2]!=0}}">{{age[2]}}日</text></text>
+      -->
+        <text class="info__l--type--text">{{petDetails.age}}</text>
+        </view>
+      </block>
+      <view class="info__l--type" wx:if="{{petDetails.birthday}}">生日: 
+        <text class="info__l--type--text">{{petDetails.birthday}}</text>
+      </view>
+       <view class="info__l--type" wx:if="{{petDetails.weight}}">体重: 
+        <text class="info__l--type--text">{{petDetails.weight}}kg</text>
+      </view>
+      <view class="info__l--type">城市: 
+        <text class="info__l--type--text">{{petDetails.city}}</text>
+      </view>
+      <view class="info__l__tags" wx:if="{{tags.length>0}}">
+        <text 
+          class="info__l__tags--li" 
+          wx:for="{{tags}}" 
+          wx:key="index"
+          wx:if="{{item}}" 
+        >{{item}}</text>
+      </view>
+      <!-- 语音 -->
+      <view class="pet_voice_box" wx:if="{{petDetails.demand_voice !== ''}}">
+        <block wx:if="{{pause == false}}">
+          <view class="pet_voice" bindtap="playVoice">
+            <image class="voice_bg" src="https://zfsqplus.oss-cn-shanghai.aliyuncs.com/76ee3de97a1b8b903319b7c013d8c877/5456fc54c74a297ce994998c2873b370/202002249d2a48a990c6c762ea305ff65ea2903b/04c071041eecd903f06a89fd26c82353.png"></image>
+            <image class="no_play_voice" src="/common/images/play_voice.png"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="pet_voice" bindtap="stopVoice">
+            <image class="voice_bg" src="https://zfsqplus.oss-cn-shanghai.aliyuncs.com/76ee3de97a1b8b903319b7c013d8c877/5456fc54c74a297ce994998c2873b370/202002249d2a48a990c6c762ea305ff65ea2903b/04c071041eecd903f06a89fd26c82353.png"></image>
+            <image class="no_play_voice" src="/common/images/room_icon_stop.png"></image>
+          </view>
+        </block>
+      </view> 
+    </view>
+    <view class="petDet-info__r">
+      <view class="info__r--btn" catchtap='apply'>领养它</view>
+      <view  bindtap="onPetShare" class="petsList-info__r--shrBtn">
+        <image 
+          class="info__r--shareBtn" 
+          src="/common/images/share2.png" 
+        />
+        <view class="info__r--text">请帮忙转发</view>
+      </view>
+    </view>
+  </view>
+  <!--  小宠介绍  -->
+  <view class="petDet-introduce">
+    <view class="petDet-introduce--title">小宠介绍</view>
+    <view class="petDet-introduce--content">{{petDetails.desc}}</view>
+  </view>
+  <!-- 领养要求  -->
+  <view class="petDet-demand">
+    <view class="demand--title">领养要求</view>
+    <view class="demand--cont">{{petDetails.demand_text}}</view>
+    <view class="demand--teltitle">联系方式</view>
+    <view class="demand-tel">
+      <view class="demand-tel__li" wx:if="{{petDetails.wechat}}">
+        <image 
+          class="demand-tel__li--wximg" 
+          src="/common/images/pet_wx.png" 
+        />
+        <text class="demand-tel__li--num" >{{petDetails.wechat}}</text>
+      </view>
+      <view class="demand-tel__li" wx:if="{{petDetails.qq}}">
+        <image 
+          class="demand-tel__li--qqimg" 
+          src="/common/images/pet_qq.png" 
+        />
+        <text class="demand-tel__li--num" >{{petDetails.qq}}</text>
+      </view>
+      <view class="demand-tel__li" wx:if="{{petDetails.mobile}}">
+        <image 
+          class="demand-tel__li--telimg" 
+          src="/common/images/pet_tel.png" 
+        />
+        <text class="demand-tel__li--num" >{{petDetails.mobile}}</text>
+      </view>
+    </view>
+    <view class="demand__imgs" >
+    <image class="demand__imgs--li" wx:for="{{pic}}" wx:key="id"
+        src="{{item}}" 
+        mode="widthFix"
+      ></image>
+   </view>
+  </view>
+  <!--  推荐  -->
+  <view class="petDet-recom">
+    <view class="recom--title">这些小可爱也期待新的家</view>
+    <view class="recom-li">
+      <block wx:for="{{petslist}}" wx:key="id">
+        <pets-list petsObj="{{item}}"  type="2" ></pets-list>
+      </block>
+    </view>
+    <view class="recom__back">
+      <view class="recom__back--btn" bindtap="navList">
+        返回列表
+      </view>
+    </view>
+  </view>
+  <!-- 底部功能区域 -->
+  <view class="petDet-func">
+    <view class="petDet-func__back" bindtap="navList">
+      <image 
+      class="func__back--img" 
+      src="/common/images/arrow2.png" 
+      />
+      <text class="func__back--text">返回</text>
+    </view>
+    <view class="func__collection" catchtap='addBuildAttention'>
+      <image 
+        class="func__collection--img" 
+        src="/common/images/collection{{is_likes==0?'':3}}.png" 
+      />
+      <text class="func__collection--text">{{is_likes==0?'收藏':'已收藏'}}</text>
+    </view>
+    <view class="func__apply" catchtap='apply'>
+      <image 
+        class="func__apply--img" 
+        src="/common/images/apply.png" 
+      />
+      <text class="func__apply--text">申请领养</text>
+    </view>
+  </view>
+</view>
+
+<pet-poster 
+  wx:if="{{posterStatus}}"
+  petDetails="{{petDetails}}"
+  bind:petClone="onPetClone"
+></pet-poster>

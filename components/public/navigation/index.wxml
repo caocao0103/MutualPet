@@ -1,0 +1,46 @@
+<!--components/public/navigation/index.wxml-->
+<view 
+  class="nav" 
+  style="height:{{44+height}}px"
+>
+  <view 
+    class="nav-box" 
+    style="margin-top:{{height}}px"
+  >
+    <view 
+      class="nav-btn" 
+      wx:if="{{pagesIndex>1}}"
+    >
+      <view 
+        class="nav-btn__back" 
+        bind:tap="onBack"
+      >
+        <image 
+          class="nav-btn__back--img" 
+          src="/common/images/back.png" 
+        />
+      </view>
+      <view 
+        class="nav-btn__home" 
+        bind:tap="onToHome"
+      >
+        <image 
+          class="nav-btn__home--img" 
+          src="/common/images/home.png" 
+        />
+      </view>
+    </view>
+    <view 
+      class="nav-noBack" 
+      wx:else
+    ></view>
+    <view class="nav__title">
+      <view class="nav__title--text" wx:if="{{navimg===''}}">{{title}}</view>
+      <image wx:else class="" src="{{navimg}}"></image>
+    </view>
+  </view>
+</view>
+<view 
+  class="navBg" 
+  style="height:{{44+height}}px"
+>互助宠物···</view>
